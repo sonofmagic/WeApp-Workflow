@@ -29,7 +29,9 @@
   },
   "homepage": "https://github.com/Jeff2Ma/weapp-workflow#readme",
   "devDependencies": {
+    "@icebreakers/eslint-config-ts": "^1.0.4",
     "del": "^6.1.1",
+    "eslint": "^8.38.0",
     "gulp": "^4.0.0",
     "gulp-cached": "^1.1.1",
     "gulp-debug": "^4.0.0",
@@ -42,9 +44,12 @@
     "gulp-sass": "^5.1.0",
     "gulp-sftp": "^0.1.5",
     "gulp-util": "^3.0.8",
+    "miniprogram-api-typings": "^3.9.1",
     "postcss-font-base64": "^1.0.4",
     "postcss-px2rpx": "0.0.4",
+    "prettier": "^2.8.7",
     "sass": "^1.62.0",
+    "typescript": "^5.0.4",
     "yargs": "^17.7.1"
   }
 }

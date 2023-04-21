@@ -1,10 +1,8 @@
-//logs.js
-var util = require('../../utils/util.js')
+// logs.js
+const util = require('../../utils/util.js')
 Page({
-	data: {
-		logs: []
-	},
-	onLoad: function () {
-
-	}
+  data: {
+    logs: []
+  },
+  onLoad: function () {}
 })
