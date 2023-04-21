@@ -165,7 +165,7 @@ function qcloudCDN(cb) {
 				headers: config.qcloud.headers
 			}));
 	}
-	cb();
+	cb && cb();
 }
 
 
