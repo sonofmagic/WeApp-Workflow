@@ -2,7 +2,7 @@ var path = require('path');
 var gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 var rename = require('gulp-rename');
-var imagemin = require('gulp-imagemin');
+// var imagemin = require('gulp-imagemin');
 var sftp = require('gulp-sftp');
 var del = require('del');
 var replace = require('gulp-replace');
@@ -15,7 +15,7 @@ var cache = require('gulp-cached');
 var debug = require('gulp-debug');
 var pxtorpx = require('postcss-px2rpx');
 var base64 = require('postcss-font-base64');
-var lazysprite = require('postcss-lazysprite');
+// var lazysprite = require('postcss-lazysprite');
 var argv  = require('yargs').argv;
 var config = null;
 
@@ -76,25 +76,25 @@ function log() {
 }
 
 // 压缩图片
-function imageMin() {
-	// return gulp.src(paths.src.imgFiles, {si≤nce: gulp.lastRun(imageMin)})
-	return gulp.src(paths.src.imgFiles)
-		.pipe(newer(paths.dist.imgDir))
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}]
-		}))
-		.pipe(gulp.dest(paths.dist.imgDir));
-}
+// function imageMin() {
+// 	// return gulp.src(paths.src.imgFiles, {si≤nce: gulp.lastRun(imageMin)})
+// 	return gulp.src(paths.src.imgFiles)
+// 		.pipe(newer(paths.dist.imgDir))
+// 		.pipe(imagemin({
+// 			progressive: true,
+// 			svgoPlugins: [{removeViewBox: false}]
+// 		}))
+// 		.pipe(gulp.dest(paths.dist.imgDir));
+// }
 
 // assets 文件夹下的图片处理
 function assetsImgMin() {
 	return gulp.src(paths.src.assetsImgFiles)
 		.pipe(newer(paths.tmp.imgDir))
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}]
-		}))
+		// .pipe(imagemin({
+		// 	progressive: true,
+		// 	svgoPlugins: [{removeViewBox: false}]
+		// }))
 		.pipe(gulp.dest(paths.tmp.imgDir))
 }
 
@@ -105,7 +105,7 @@ function sassCompile() {
 		.pipe(sass({errLogToConsole: true,outputStyle: 'expanded'})
 			.on('error', sass.logError))
 		.pipe(gulpif(Boolean(argv.debug),debug({title: '`sassCompile` Debug:'})))
-		.pipe(postcss([lazysprite(lazyspriteConfig), pxtorpx(), base64()]))
+		// .pipe(postcss([lazysprite(lazyspriteConfig), pxtorpx(), base64()]))
 		.pipe(rename({
 			'extname': '.wxss'
 		}))
@@ -189,7 +189,7 @@ var watchHandler = function (type, file) {
 				del([file.replace('src/', 'dist/')]);
 			}
 		} else {
-			imageMin();
+			// imageMin();
 			assetsImgMin();
 			qcloudCDN();
 			wxmlImgRewrite();
@@ -251,7 +251,7 @@ gulp.task('default', gulp.series(
 	copyBasicFiles,
 	gulp.parallel(
 		sassCompile,
-		imageMin,
+		// imageMin,
 		copyWXML
 	),
 	wxmlImgRewrite,
@@ -266,7 +266,7 @@ gulp.task('test', gulp.series(
 	copyBasicFiles,
 	gulp.parallel(
 		sassCompile,
-		imageMin,
+		// imageMin,
 		copyWXML
 	),
 	wxmlImgRewrite,
