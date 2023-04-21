@@ -1,17 +1,6 @@
-/**
- * ------------------------------------------------------------------
- * WeApp-Workflow gulpfile 文件
- * ------------------------------------------------------------------
- *
- * @author  JeffMa
- * @link    https://devework.com/
- * @data    2017-06-11
- * @update  2018-03-22
- */
-
 var path = require('path');
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var sftp = require('gulp-sftp');
