@@ -13,8 +13,9 @@ const gutil = require('gulp-util')
 const newer = require('gulp-newer')
 const cache = require('gulp-cached')
 const debug = require('gulp-debug')
-const pxtorpx = require('postcss-px2rpx')
-const base64 = require('postcss-font-base64')
+
+// const pxtorpx = require('postcss-px2rpx')
+// const base64 = require('postcss-font-base64')
 // var lazysprite = require('postcss-lazysprite');
 const argv = require('yargs').argv
 let config = null
@@ -109,7 +110,7 @@ function sassCompile() {
     .src(paths.src.scssFiles)
     .pipe(sass({ errLogToConsole: true, outputStyle: 'expanded' }).on('error', sass.logError))
     .pipe(gulpif(Boolean(argv.debug), debug({ title: '`sassCompile` Debug:' })))
-    .pipe(postcss([pxtorpx(), base64()]))
+    .pipe(postcss())
     .pipe(
       rename({
         extname: '.wxss'
